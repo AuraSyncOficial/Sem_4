@@ -25,19 +25,12 @@ namespace Semana4
 
         public void Crecer()
         {
-            TiempoDeVida++;
+            if (TiempoDeVida > 0)
+            {
+                TiempoDeVida--;
+            }
         }
 
-        public int Cosechar()
-        {
-            int productosCosechados = FrutosVerdurasPorCosecha;
-            TiempoDeVida = 0;
-            return productosCosechados;
-        }
-
-        public int ValorTotal()
-        {
-            return ValorSemilla + (Cosechar() * ValorProducto);
-        }
     }
+
 }

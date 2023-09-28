@@ -10,17 +10,22 @@ namespace Semana4
     {
         private int tamaño;
         private int dineroDisponible;
-        private List<string> plantasAnimales;
+        public List<Planta> plantasLista;
+        public List<Animales> animalesLista;
 
         public int Tamaño => tamaño;
-        public int DineroDisponible => dineroDisponible;
-        public int NumeroDePlantasAnimales => plantasAnimales.Count;
-
+        public int DineroDisponible
+        {
+            get { return dineroDisponible; }
+            set { dineroDisponible = value; }
+        }
+        public int ParcelasDisponibles => Tamaño - (plantasLista.Count+ animalesLista.Count);
         public Granja()
         {
             tamaño = 1;
             dineroDisponible = 100;
-            plantasAnimales = new List<string>();
+            plantasLista = new List<Planta>();
+            animalesLista = new List<Animales>();
         }
 
         public void ComprarExpansion()
@@ -39,13 +44,6 @@ namespace Semana4
             Console.ReadLine();
         }
 
-        public void AgregarPlantaOAnimal()
-        {
-            Console.Write("Ingrese el nombre de la planta o animal: ");
-            string nombre = Console.ReadLine();
-            plantasAnimales.Add(nombre);
-            Console.WriteLine($"Has agregado un/a {nombre} a tu granja.");
-            Console.ReadLine();
-        }
     }
+
 }

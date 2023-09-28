@@ -9,14 +9,17 @@ namespace Semana4
     class Animales
     {
         public string Nombre { get; }
-        public int TiempoDeVida { get; private set; }
+        public int TiempoDeVida { get;  set; }
         public int CarneProductosPorAnimal { get; }
         public int PrecioAnimal { get; }
         public int ProductoFinal { get; }
 
+        public int tiempoDeVidaInicial;
+
         public Animales(string nombre, int tiempoDeVida, int carneProductosPorAnimal, int precioAnimal, int productoFinal)
         {
             Nombre = nombre;
+            tiempoDeVidaInicial = tiempoDeVida;
             TiempoDeVida = tiempoDeVida;
             CarneProductosPorAnimal = carneProductosPorAnimal;
             PrecioAnimal = precioAnimal;
@@ -25,19 +28,15 @@ namespace Semana4
 
         public void Crecer()
         {
-            TiempoDeVida++;
+            if (TiempoDeVida > 0)
+            {
+                TiempoDeVida--;
+            }
+        }
+        public void RestaurarTiempoDeVidaInicial()
+        {
+            TiempoDeVida = tiempoDeVidaInicial;
         }
 
-        public int Vender()
-        {
-            int animalVendido = CarneProductosPorAnimal;
-            TiempoDeVida = 0;
-            return animalVendido;
-        }
-
-        public int ValorTotal()
-        {
-            return PrecioAnimal + (Vender() * ProductoFinal);
-        }
     }
 }
